@@ -1,0 +1,120 @@
+// @import '~@angular/material/prebuilt-themes/purple-green.css';
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+// App theme
+@mixin app-theme($theme) {
+  @if ($theme != null) {
+    $primary: map-get($theme, primary);
+    .active-link {
+      color: mat-color($primary) !important;
+      background-color: #DCDCDC !important;
+    }
+  }
+}
+
+// Customization of app theme
+$app-theme-primary: mat-palette($mat-blue);
+$app-theme-accent: mat-palette($mat-pink, A200, A100, A400);
+$app-theme: mat-light-theme($app-theme-primary, $app-theme-accent);
+@include angular-material-theme($app-theme);
+@include app-theme($app-theme);
+
+// Typography
+$droid-sans-typography: mat-typography-config(
+  $font-family: "'Droid Sans', sans-serif"
+);
+$google-sans-typography: mat-typography-config(
+  $font-family: "'Google Sans', sans-serif"
+);
+$lato-typography: mat-typography-config(
+  $font-family: 'Lato, sans-serif'
+);
+$montserrat-typography: mat-typography-config(
+  $font-family: 'Montserrat, sans-serif'
+);
+$open-sans-typography: mat-typography-config(
+  $font-family: "'Open Sans', sans-serif"
+);
+$oswald-typography: mat-typography-config(
+  $font-family: 'Oswald, sans-serif'
+);
+$roboto-typography: mat-typography-config(
+  $font-family: 'Roboto, sans-serif'
+);
+$roboto-condensed-typography: mat-typography-config(
+  $font-family: "'Roboto Condensed', sans-serif"
+);
+$work-sans-typography: mat-typography-config(
+  $font-family: "'Work Sans', sans-serif"
+);
+
+.font-droid-sans {
+  @include angular-material-typography($droid-sans-typography);
+}
+.font-google-sans {
+  @include angular-material-typography($google-sans-typography);
+}
+.font-lato {
+  @include angular-material-typography($lato-typography);
+}
+.font-montserrat {
+  @include angular-material-typography($montserrat-typography);
+}
+.font-open-sans {
+  @include angular-material-typography($open-sans-typography);
+}
+.font-oswald {
+  @include angular-material-typography($oswald-typography);
+}
+.font-default, .font-roboto {
+  @include angular-material-typography($roboto-typography);
+}
+.font-roboto-condensed {
+  @include angular-material-typography($roboto-condensed-typography);
+}
+.font-work-sans {
+  @include angular-material-typography($work-sans-typography);
+}
+
+.mat-menu-panel.font-menu {
+  min-width: 200px;
+  max-width: 100%;
+  overflow-x: hidden;
+  min-height: fit-content;
+  .mat-menu-content {
+    overflow: hidden;
+  }
+}
+body {
+  margin: 0;
+}
+.app-toolbar {
+  position: fixed;
+  z-index: 2;
+}
+.app-content {
+  padding: 2.5%;
+  position: absolute;
+  top: 64px;
+}
+@media (max-width: 599px) {
+  .app-content {
+    top: 56px;
+  }
+}
+.fill-spacer {
+  flex: 1;
+}
+.version-info {
+  font-size: 8pt;
+  float: right;
+}
+
+/**
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */

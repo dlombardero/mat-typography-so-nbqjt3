@@ -1,0 +1,141 @@
+<mat-sidenav-container fullscreen>
+	<mat-sidenav #componentsSidenav="matSidenav" class="app-sidenav">
+		<mat-toolbar>Component demos</mat-toolbar>
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<mat-toolbar color="primary" class="mat-elevation-z3 app-toolbar">
+			Angular Material Typography
+			<span class="fill-spacer"></span>
+			<button mat-icon-button [matMenuTriggerFor]="fontsMenu" matTooltip="Choose a font!">
+        <mat-icon>font_download</mat-icon>
+      </button>
+			<mat-menu #fontsMenu="matMenu" class="font-menu">
+				<button mat-menu-item *ngFor="let font of fonts" (click)="applyFont(font)" [class.active-link]="isFontClassApplied(font.fontClass)" [style.fontFamily]="font.name">
+          <mat-icon>font_download</mat-icon>
+          <span>{{font.name}}<ng-container *ngIf="isFontClassApplied(font.fontClass)"> (current)</ng-container></span>
+        </button>
+				<mat-divider></mat-divider>
+				<button mat-menu-item (click)="resetFontClass()">
+          <mat-icon>clear</mat-icon>
+          <span>Reset to default font</span>
+        </button>
+				<!--<mat-nav-list>
+					<mat-list-item (click)="applyFontClass(font.fontClass)" *ngFor="let font of fonts" [class.active-link]="isFontClassApplied(font.fontClass)" [style.fontFamily]="font.name">
+						<mat-icon matListIcon>
+							<svg>
+								<path d="M17,8H20V20H21V21H17V20H18V17H14L12.5,20H14V21H10V20H11L17,8M18,9L14.5,16H18V9M5,3H10C11.11,3 12,3.89 12,5V16H9V11H6V16H3V5C3,3.89 3.89,3 5,3M6,5V9H9V5H6Z"
+								/>
+							</svg>
+						</mat-icon>
+						<h2 matLine>{{font.name}}
+							<span *ngIf="isFontClassApplied(font.fontClass)"> - applied</span>
+						</h2>
+						<h3 matLine style="width: fit-content">{{font.isOpenSource ? 'Open-source font' : 'Proprietary font'}}</h3>
+					</mat-list-item>
+          <mat-divider></mat-divider>
+					<mat-list-item (click)="resetFontClass()">
+						<mat-icon matListIcon>close</mat-icon>
+						<h2 matLine>Reset to default font</h2>
+					</mat-list-item>
+				</mat-nav-list>-->
+			</mat-menu>
+		</mat-toolbar>
+
+		<div class="app-content">
+			<section class="section" id="buttons">
+				<h1>Buttons</h1>
+				<div *ngFor="let color of ['primary', 'accent', 'warn']">
+					<h3>Color: {{color}}</h3>
+					<div class="example-button-row">
+						<button mat-button [color]="color">NORMAL</button>
+						<button mat-raised-button [color]="color">RAISED</button>
+						<button mat-stroked-button [color]="color">STROKED</button>
+						<button mat-flat-button [color]="color">FLAT</button>
+						<button mat-fab [color]="color"><mat-icon>add</mat-icon></button>
+						<button mat-mini-fab [color]="color"><mat-icon>share</mat-icon></button>
+						<button mat-icon-button [color]="color"><mat-icon>done</mat-icon></button>
+					</div>
+					<br>
+				</div>
+			</section>
+			<section class="section" id="button-toggles">
+				<h1>Button toggles</h1>
+				<section class="section" id="button-toggle-single">
+					<h2>Single</h2>
+					<mat-button-toggle-group [(ngModel)]="btnToggleSingle">
+						<mat-button-toggle value="toggle-1">I</mat-button-toggle>
+						<mat-button-toggle value="toggle-2">
+							<mat-icon>favorite</mat-icon>
+						</mat-button-toggle>
+						<mat-button-toggle value="toggle-3">button</mat-button-toggle>
+						<mat-button-toggle value="toggle-4" disabled>toggles</mat-button-toggle>
+						<mat-button-toggle value="toggle-5">!</mat-button-toggle>
+					</mat-button-toggle-group>
+				</section>
+				<section class="section" id="button-toggle-multiple">
+					<h2>Multiple</h2>
+					<mat-button-toggle-group [(ngModel)]="btnToggleMultiple" multiple>
+						<mat-button-toggle value="toggle-1">Toggle #1</mat-button-toggle>
+						<mat-button-toggle value="toggle-2">Toggle #2</mat-button-toggle>
+						<mat-button-toggle value="toggle-3">Toggle #3</mat-button-toggle>
+						<mat-button-toggle value="toggle-4" disabled>Toggle #4</mat-button-toggle>
+					</mat-button-toggle-group>
+				</section>
+			</section>
+			<section class="section" id="cards">
+				<h1>Cards</h1>
+				<section class="section" id="cards-simple">
+					<h2>Simple</h2>
+					<mat-card>Barebones card</mat-card>
+				</section>
+				<section class="section" id="card-with-multiple-sect">
+					<h2>Card with multiple sections</h2>
+					<mat-card class="example-card">
+						<mat-card-header>
+							<div mat-card-avatar class="example-header-image"></div>
+							<mat-card-title>Shiba Inu</mat-card-title>
+							<mat-card-subtitle>Dog Breed</mat-card-subtitle>
+						</mat-card-header>
+						<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+						<mat-card-content>
+							<p>
+								The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
+								from Japan. A small, agile dog that copes
+								very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
+							</p>
+						</mat-card-content>
+						<mat-card-actions>
+							<button mat-button>LIKE</button>
+							<button mat-button>SHARE</button>
+						</mat-card-actions>
+					</mat-card>
+				</section>
+				<section class="section" id="card-blog-post">
+					<h2>Card blog post</h2>
+					<mat-card>
+						<mat-card-header>
+							<mat-card-title>Angular Material</mat-card-title>
+							<mat-card-subtitle>Published {{todayDate | date}}</mat-card-subtitle>
+						</mat-card-header>
+						<mat-card-content>
+							<p>{{loremipsum}}</p>
+						</mat-card-content>
+						<mat-card-actions>
+							<button mat-button matTooltip="Like"><mat-icon inline>favorite</mat-icon> 10</button>
+						</mat-card-actions>
+					</mat-card>
+				</section>
+
+
+			</section>
+
+			<br>
+		</div>
+	</mat-sidenav-content>
+</mat-sidenav-container>
+<!--
+Copyright Google LLC All Rights Reserved.
+
+Use of this source code is governed by an MIT-style license that can be
+found in the LICENSE file at https://angular.io/license
+-->

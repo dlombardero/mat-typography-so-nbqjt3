@@ -1,0 +1,94 @@
+<!-- This file contains the original demos -->
+<h1>Configurations</h1>
+<mat-checkbox [(ngModel)]="showResult">Show result?</mat-checkbox>
+
+<hr>
+
+<hr>
+<div class="section" id="buttons">
+	<h1>Buttons</h1>
+	<div *ngFor="let color of ['primary', 'accent', 'warn']">
+		<h3>Color: {{color}}</h3>
+		<div class="example-button-row">
+			<button mat-button [color]="color">NORMAL</button>
+			<button mat-raised-button [color]="color">RAISED</button>
+			<button mat-stroked-button [color]="color">STROKED</button>
+			<button mat-flat-button [color]="color">FLAT</button>
+			<button mat-fab [color]="color"><mat-icon>add</mat-icon></button>
+			<button mat-mini-fab [color]="color"><mat-icon>share</mat-icon></button>
+			<button mat-icon-button [color]="color"><mat-icon>done</mat-icon></button>
+		</div>
+		<br>
+	</div>
+</div>
+<div class="section" id="button-toggles">
+	<h1>Button toggles</h1>
+	<div class="section" id="button-toggle-single">
+		<h2>Single</h2>
+		<mat-button-toggle-group [(ngModel)]="btnToggleSingle">
+			<mat-button-toggle value="toggle-1">I</mat-button-toggle>
+			<mat-button-toggle value="toggle-2">
+				<mat-icon>favorite</mat-icon>
+			</mat-button-toggle>
+			<mat-button-toggle value="toggle-3">button</mat-button-toggle>
+			<mat-button-toggle value="toggle-4" disabled>toggles</mat-button-toggle>
+			<mat-button-toggle value="toggle-5">!</mat-button-toggle>
+		</mat-button-toggle-group>
+	</div>
+	<div class="section" id="button-toggle-multiple">
+		<h2>Multiple</h2>
+		<mat-button-toggle-group [(ngModel)]="btnToggleMultiple" multiple>
+			<mat-button-toggle value="toggle-1">Toggle #1</mat-button-toggle>
+			<mat-button-toggle value="toggle-2">Toggle #2</mat-button-toggle>
+			<mat-button-toggle value="toggle-3">Toggle #3</mat-button-toggle>
+			<mat-button-toggle value="toggle-4" disabled>Toggle #4</mat-button-toggle>
+		</mat-button-toggle-group>
+	</div>
+</div>
+<div class="section" id="cards">
+	<h1>Cards</h1>
+	<div class="section" id="cards-simple">
+		<h2>Simple</h2>
+		<mat-card>Barebones card</mat-card>
+	</div>
+	<div class="section" id="card-with-multiple-sect">
+		<h2>Card with multiple sections</h2>
+		<mat-card class="example-card">
+			<mat-card-header>
+				<div mat-card-avatar class="example-header-image"></div>
+				<mat-card-title>Shiba Inu</mat-card-title>
+				<mat-card-subtitle>Dog Breed</mat-card-subtitle>
+			</mat-card-header>
+			<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+			<mat-card-content>
+				<p>
+					The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes
+					very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
+				</p>
+			</mat-card-content>
+			<mat-card-actions>
+				<button mat-button>LIKE</button>
+				<button mat-button>SHARE</button>
+			</mat-card-actions>
+		</mat-card>
+	</div>
+	<div class="section" id="card-blog-post">
+		<h2>Card blog post</h2>
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>Angular Material</mat-card-title>
+				<mat-card-subtitle>Published {{todayDate | date}}</mat-card-subtitle>
+			</mat-card-header>
+      <mat-card-content>
+        <p>{{loremipsum}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button matTooltip="Like"><mat-icon inline>favorite</mat-icon> 10</button>
+      </mat-card-actions>
+		</mat-card>
+	</div>
+
+
+</div>
+
+<br>
